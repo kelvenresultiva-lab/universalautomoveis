@@ -3,6 +3,7 @@
 /*
 !/.gitignore
 !/index.html
+!/vercel.json
 !/README.md
 
 !/modelos/
@@ -17,6 +18,7 @@
 !/modelos/pagina-veiculo/index.html
 !/modelos/pagina-veiculo/ajustes.css
 !/modelos/pagina-veiculo/celular.css
+!/modelos/pagina-veiculo/card-preco.css
 !/modelos/pagina-veiculo/veiculo.js
 !/modelos/pagina-veiculo/arquivos/
 /modelos/pagina-veiculo/arquivos/*

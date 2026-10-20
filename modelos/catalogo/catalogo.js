@@ -111,7 +111,7 @@
   function card(v) {
     const nome = `${v.marca} ${v.modelo}`;
     const foto = v.foto
-      ? `<img src="fotos/${v.foto}" alt="${nome} ${v.ano}" loading="lazy">`
+      ? `<img src="/modelos/catalogo/fotos/${v.foto}" alt="${nome} ${v.ano}" loading="lazy">`
       : `<div class="card__sem-foto">Fotos em breve</div>`;
     const km = v.km === null ? "" : v.km === 0 ? "0 Km" : v.km.toLocaleString("pt-BR") + " Km";
     return `

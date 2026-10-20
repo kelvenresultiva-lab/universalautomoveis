@@ -1,0 +1,160 @@
+/* ================= Card de preço do desktop (coluna da direita da página do carro) ================= */
+
+/* acompanha a rolagem, logo abaixo do topo */
+.Forms__vehicleSendProposal__container {
+  position: sticky !important;
+  top: 88px !important;
+  height: auto !important;
+}
+.Forms__vehicleSendProposal__container__info-form { padding: 0 !important; }
+
+.card-preco {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 24px;
+  border: 1px solid #ececf2;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(46, 45, 55, .08);
+  color: #2e2d37;
+  font-family: inherit;
+}
+.card-preco__rotulo {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  color: #6b6b7b;
+}
+.card-preco__valor {
+  margin: 4px 0 0;
+  font-size: clamp(30px, 2.6vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: #2e2d37;
+  white-space: nowrap;
+}
+.card-preco__valor--consulta { font-size: clamp(24px, 2vw, 30px); }
+.card-preco--vendido .card-preco__valor { color: #b3123a; }
+
+.card-preco__fipe {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  background: #e8f7ee;
+  color: #157a3d;
+  font-size: 13px;
+  font-weight: 700;
+}
+.card-preco__fipe svg { width: 16px; height: 16px; }
+
+.card-preco__resumo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+.card-preco__resumo li {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #f3f3f7;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a4a57;
+}
+
+.card-preco .botao-whatsapp--grande {
+  margin: 0 !important;
+  height: 54px;
+  padding: 0 16px !important;
+  border-radius: 10px;
+  font-size: 16px !important;
+}
+
+.card-preco__acoes {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-top: 10px;
+}
+.card-preco__secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 16px;
+  border: 1.5px solid #2e2d37;
+  border-radius: 10px;
+  background: #fff;
+  color: #2e2d37;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .15s, color .15s, transform .1s;
+}
+.card-preco__secundario svg { width: 18px; height: 18px; flex: 0 0 18px; }
+.card-preco__secundario:hover { background: #2e2d37; color: #fff; }
+.card-preco__secundario:active { transform: scale(.97); }
+.card-preco__secundario:focus-visible { outline: 3px solid rgba(46, 45, 55, .35); outline-offset: 2px; }
+
+.card-preco__vantagens {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid #ececf2;
+  list-style: none;
+  font-size: 13px;
+  color: #4a4a57;
+}
+.card-preco__vantagens li { display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+.card-preco__vantagens svg { flex: 0 0 16px; width: 16px; height: 16px; margin-top: 1px; color: #1fa855; }
+
+/* notebook e tablet: a coluna fica estreita, então tudo se reorganiza */
+@media (max-width: 1280px) {
+  .card-preco { padding: 22px 20px 20px; }
+  .card-preco__acoes { grid-template-columns: 1fr; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card-preco__valor { font-size: 28px; }
+  .card-preco .botao-whatsapp--grande { font-size: 15px !important; }
+}
+
+
+/* 900–1279px: duas colunas (o original empilhava tudo e o preço ia para o fim da página) */
+@media (min-width: 900px) and (max-width: 1279px) {
+  .Detail__container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 34%);
+    gap: 20px;
+    align-items: start;
+    padding: 0 20px !important;
+  }
+  .Detail__container__left, .Detail__container__right { width: auto !important; max-width: none !important; margin: 0 !important; }
+  .Detail__container__right { align-self: stretch; }
+}
+/* 769–899px: uma coluna, com o card de preço logo abaixo das fotos */
+@media (min-width: 769px) and (max-width: 899px) {
+  .Detail__container { display: flex !important; flex-direction: column; gap: 16px; padding: 0 20px !important; }
+  .Detail__container__left, .Detail__container__right { width: auto !important; max-width: none !important; margin: 0 !important; }
+  .Detail__container__right { order: -1; }
+  .Forms__vehicleSendProposal__container { position: static !important; }
+  .Forms__vehicleSendProposal__container-scroll { height: auto !important; }
+  .card-preco { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+  .card-preco > * { grid-column: 1; }
+  .card-preco .botao-whatsapp--grande, .card-preco__acoes, .card-preco__vantagens { grid-column: 2; }
+  .card-preco .botao-whatsapp--grande { grid-row: 1 / span 2; align-self: center; }
+  .card-preco__acoes { grid-row: 3 / span 2; align-self: start; }
+  .card-preco__vantagens { grid-column: 1 / -1; }
+}
+
+/* topo intermediário (769–1279px): o cabeçalho mobile já tem a marca; a cópia extra sai */
+@media (max-width: 1279px) { .marca-loja-mobile { display: none !important; } }

@@ -1,7 +1,7 @@
 // Menu de três traços (catálogo e página do carro): tira o WhatsApp do cabeçalho e abre um painel com as seções do site.
 (function () {
-  const naPaginaDoCarro = location.pathname.includes("/pagina-veiculo/");
-  const BASE = naPaginaDoCarro ? "../catalogo/" : "./";
+  const naPaginaDoCarro = !!document.querySelector(".DetailCarousel"); // a página do carro abre em /<slug>
+  const BASE = "/"; // o catálogo é a página principal
   const WHATS = "5531989044592";
   const wa = (msg) => `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
 
@@ -83,5 +83,5 @@
   fundo.addEventListener("click", fechar);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && painel.classList.contains("aberto")) fechar(); });
   // links internos (Contato, mesma página) fecham o painel
-  painel.querySelectorAll('a[href^="#"], a[href^="./"], a[href^="../"]').forEach((a) => a.addEventListener("click", fechar));
+  painel.querySelectorAll('a[href^="#"], a[href^="/"]').forEach((a) => a.addEventListener("click", fechar));
 })();

@@ -587,5 +587,5 @@ window.ESTOQUE = [
   ...(FIPE_CONFERIDA[v.slug] || {}),
   id: i + 1,
   foto: `${v.slug}/capa.jpg`, // capa leve (600x450) para os cards; as fotos grandes são 01.jpg, 02.jpg...
-  link: `../pagina-veiculo/?carro=${v.slug}`,
+  link: `/${v.slug}`, // página do carro: endereço do site + slug
 }));

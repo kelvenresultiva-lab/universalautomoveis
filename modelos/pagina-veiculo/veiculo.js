@@ -1,14 +1,17 @@
-// Preenche a página do carro com o veículo de ?carro=<slug> (dados em ../catalogo/estoque.js).
+// Preenche a página do carro com o veículo do endereço /<slug> (ou ?carro=<slug>); dados em /modelos/catalogo/estoque.js.
 (function () {
   const estoque = window.ESTOQUE || [];
   if (!estoque.length) return;
 
   const CIDADE = "Contagem - MG";
   const WHATS = "5531989044592"; // WhatsApp da loja (Cauã), do perfil do Instagram
-  const FOTOS = "../catalogo/fotos/";
+  const FOTOS = "/modelos/catalogo/fotos/";
 
-  const slug = new URLSearchParams(location.search).get("carro");
-  const v = estoque.find((c) => c.slug === slug) || estoque[0];
+  // endereço /toyota-hilux-srx-2019 (ou o antigo ?carro=toyota-hilux-srx-2019)
+  const doCaminho = decodeURIComponent(location.pathname.replace(/\/+$/, "").split("/").pop() || "");
+  const slug = new URLSearchParams(location.search).get("carro") || doCaminho;
+  const v = estoque.find((c) => c.slug === slug);
+  if (!v) { location.replace("/"); return; } // carro que não existe (ou já saiu do estoque): volta para o catálogo
 
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => [...document.querySelectorAll(s)];
@@ -224,6 +227,38 @@
   if (aviso && v.vendido) aviso.textContent = "Este já foi vendido, mas a gente procura um igual ou parecido para você.";
   $$(".botao-whatsapp").forEach((a) => (a.href = `https://wa.me/${WHATS}?text=${texto}`));
 
+  // ================= Card de preço do desktop (coluna da direita) =================
+  const infoPreco = $(".Forms__vehicleSendProposal__container__info-form");
+  if (infoPreco) {
+    const linkW = (msg) => `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
+    const resumo = [v.ano, v.km !== null && `${km(v)} km`, v.cambio, v.combustivel].filter(Boolean);
+    const economia = v.abaixoFipe && v.fipe && v.preco ? v.fipe - v.preco : 0;
+    const check = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const valor = v.vendido ? "Vendido" : v.preco == null ? "Sob consulta" : reais(v.preco);
+    infoPreco.innerHTML = `
+      <div class="card-preco${v.vendido ? " card-preco--vendido" : ""}">
+        <span class="card-preco__rotulo">${v.vendido ? "Este veículo" : v.preco == null ? "Preço" : "Preço à vista"}</span>
+        <strong class="card-preco__valor${v.preco == null && !v.vendido ? " card-preco__valor--consulta" : ""}" id="vehicleSendProposalPrice">${valor}</strong>
+        ${economia > 0 ? `<span class="card-preco__fipe">${check}${reais(economia)} abaixo da FIPE</span>` : ""}
+        <ul class="card-preco__resumo">${resumo.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+        <a class="botao-whatsapp botao-whatsapp--grande" href="https://wa.me/${WHATS}?text=${texto}" target="_blank" rel="noopener">${v.vendido ? "Quero um parecido" : "Chamar no WhatsApp"}</a>
+        <div class="card-preco__acoes">
+          ${v.vendido
+            ? `<a class="card-preco__secundario" href="/">Ver estoque</a>`
+            : `<a class="card-preco__secundario" href="${linkW(`Olá! Quero simular as parcelas do ${nome} ${v.versao} ${v.ano}${v.preco ? ` (${reais(v.preco)})` : ""}.`)}" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3 10h18M7 15h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>Simular parcelas</a>`}
+          <a class="card-preco__secundario" href="tel:+553133953117" aria-label="Ligar para a loja: (31) 3395-3117">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5l2.6 4-1.8 1.9a12 12 0 0 0 7.2 7.2l1.9-1.8 4 2.6-1.1 3.1c-.3.8-1.1 1.3-2 1.2C9.6 20.9 3.1 14.4 2.3 6.6c-.1-.9.4-1.7 1.2-2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>Ligar</a>
+        </div>
+        <ul class="card-preco__vantagens">
+          ${v.vendido
+            ? `<li>${check}Procuramos um igual ou parecido para você</li>`
+            : `<li>${check}Aceitamos seu usado na troca</li><li>${check}Financiamento em até 60x ou 18x no cartão</li>`}
+          <li>${check}Universal Automóveis · Contagem/MG</li>
+        </ul>
+      </div>`;
+  }
+
   // ================= Layout do celular (igual ao app/site móvel da Webmotors) =================
   const LIGAR = "tel:+553133953117"; // fixo da loja, do perfil do Instagram
   const linkWhats = (msg) => `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
@@ -321,7 +356,7 @@
   // Barra fixa do celular: Ver parcelas | ligar | Enviar mensagem
   document.body.insertAdjacentHTML("beforeend", `<nav class="barra-acoes" aria-label="Falar com a loja">
     ${v.vendido
-      ? `<a class="barra-acoes__secundario" href="../catalogo/">Ver estoque</a>`
+      ? `<a class="barra-acoes__secundario" href="/">Ver estoque</a>`
       : `<a class="barra-acoes__secundario" href="${linkWhats(msgParcelas)}" target="_blank" rel="noopener">Ver parcelas</a>`}
     <a class="barra-acoes__ligar" href="${LIGAR}" aria-label="Ligar para a loja: (31) 3395-3117">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5l2.6 4-1.8 1.9a12 12 0 0 0 7.2 7.2l1.9-1.8 4 2.6-1.1 3.1c-.3.8-1.1 1.3-2 1.2C9.6 20.9 3.1 14.4 2.3 6.6c-.1-.9.4-1.7 1.2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
@@ -342,7 +377,7 @@
     trilho.innerHTML = outros
       .map((c) => `<div class="slick-slide" style="width:254px">
         <div><div class="slick-padding">
-          <a href="./?carro=${c.slug}" class="sc-jhAzac hwDIQl">
+          <a href="/${c.slug}" class="sc-jhAzac hwDIQl">
             <img src="${FOTOS}${c.foto}" alt="${esc(c.marca + " " + c.modelo)} ${c.ano}" class="sc-fBuWsC fZHYvh" loading="lazy">
             <div class="sc-cHGsZl bkaoLk">
               <div class="sc-eqIVtm cJiAfR">
@@ -355,7 +390,7 @@
                 <div class="sc-gisBJw gUPayE">${c.km === null ? "" : km(c) + " Km"}</div>
               </div>
             </div>
-            <div class="sc-kjoXOD dixXeQ"><img src="./arquivos/icon-location.svg" class="sc-TOsTZ kQjUic" alt=""><span>${CIDADE}</span></div>
+            <div class="sc-kjoXOD dixXeQ"><img src="/modelos/pagina-veiculo/arquivos/icon-location.svg" class="sc-TOsTZ kQjUic" alt=""><span>${CIDADE}</span></div>
           </a>
         </div></div>
       </div>`)
