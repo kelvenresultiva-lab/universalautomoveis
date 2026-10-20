@@ -1,0 +1,286 @@
+/* ================= Página do carro no celular (layout do site móvel da Webmotors) =================
+   Carregado depois do ajustes.css. Os elementos novos são criados pelo veiculo.js. */
+
+/* elementos que só existem no celular */
+.preco-mobile, .barra-acoes, .galeria-pontos, .galeria-contador, .galeria-favorito, .itens-abrir { display: none; }
+
+/* Ficha técnica em sanfona (aparece no desktop e no celular) */
+.ficha-tecnica { margin-top: 20px; padding: 24px 0 8px !important; }
+.ficha-tecnica__titulo { margin: 0 32px 12px; font-size: 13px; font-weight: 400; color: var(--cinza); }
+.ficha-tecnica__grupo { border-top: 1px solid var(--borda); }
+.ficha-tecnica__grupo summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 32px;
+  font-size: 16px;
+  color: var(--texto);
+  cursor: pointer;
+  list-style: none;
+}
+.ficha-tecnica__grupo summary::-webkit-details-marker { display: none; }
+.ficha-tecnica__icone { flex: 0 0 24px; width: 24px; height: 24px; color: var(--texto); }
+.ficha-tecnica__seta { width: 22px; height: 22px; margin-left: auto; transition: transform .2s; }
+.ficha-tecnica__grupo[open] .ficha-tecnica__seta { transform: rotate(180deg); }
+.ficha-tecnica__grupo ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+  margin: 0;
+  padding: 0 32px 20px 70px;
+  list-style: none;
+  font-size: 14px;
+  color: var(--texto);
+}
+
+@media (max-width: 768px) {
+  /* tudo de ponta a ponta, como no app */
+  .Detail__container { padding: 0 !important; margin-top: 0 !important; }
+  .Detail__container__left { width: 100% !important; padding: 0 !important; }
+  .InformationVehicleDetails > .VehicleDetails,
+  .ficha-tecnica {
+    margin: 0 0 8px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  body { padding-bottom: 92px !important; }
+
+  /* fotos: pontinhos e coração por cima */
+  .DetailCarousel { position: relative; }
+  .galeria-pontos {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    pointer-events: none;
+  }
+  .galeria-pontos span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, .9); box-shadow: 0 0 2px rgba(0, 0, 0, .35); }
+  .galeria-pontos span.ativo { background: var(--vermelho); }
+  .galeria-contador {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 3;
+    display: block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .55);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .galeria-favorito {
+    position: absolute;
+    right: 14px;
+    bottom: 44px;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #fff;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .5));
+    cursor: pointer;
+  }
+  .galeria-favorito svg { width: 34px; height: 34px; }
+  .galeria-favorito[aria-pressed="true"] svg path { fill: var(--vermelho); stroke: var(--vermelho); }
+
+  /* título, versão e preço grande com "Ver Parcelas" */
+  .VehicleDetails__header { padding: 22px 0 0 !important; }
+  .VehicleDetails__header__top { padding: 0 16px !important; }
+  #VehicleBasicInformationTitle { font-size: 26px !important; line-height: 1.15; }
+  #VehicleBasicInformationTitle strong { color: var(--vermelho) !important; }
+  #VehicleBasicInformationDescription { display: block; margin-top: 6px; font-size: 14px !important; color: var(--cinza); }
+  .VehicleDetails__header__favorite { display: none; }
+  .preco-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px 16px 6px;
+  }
+  .preco-mobile__valor { font-size: 34px; font-weight: 500; color: var(--texto); white-space: nowrap; letter-spacing: -.01em; }
+  .preco-mobile__valor--consulta { font-size: 24px; }
+  .preco-mobile--vendido .preco-mobile__valor { color: #b3123a; }
+  .preco-mobile__parcelas {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--vermelho);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .preco-mobile__parcelas svg { width: 20px; height: 20px; }
+  #VehicleCharacteristic .VehicleDetails__container { padding: 12px 16px 8px !important; }
+  #VehicleCharacteristic .VehicleDetails__list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 16px;
+  }
+  #VehicleCharacteristic .VehicleDetails__list__item { width: auto !important; margin: 0 !important; padding: 0 !important; }
+  #VehicleCharacteristic .VehicleDetails__list__item__fullWidth { grid-column: 1 / -1; }
+  #VehicleCharacteristic .VehicleDetails__list__item__title { font-size: 14px !important; color: var(--cinza) !important; }
+  #VehicleCharacteristic .VehicleDetails__list__item__value { font-size: 17px !important; }
+
+  /* diferenciais em lista sanfona (o texto abre na própria linha) */
+  .diferenciais { margin: 18px 0 0 !important; padding: 0 !important; }
+  .diferenciais__titulo { margin: 0 16px 6px; }
+  .sobre-carro .diferenciais__titulo { margin: 0 0 10px; }
+  .diferenciais__lista { display: block; }
+  .diferencial { border-top: 1px solid var(--borda); }
+  .diferencial__botao { width: 100%; gap: 18px; padding: 20px 16px; font-size: 17px; }
+  .diferencial__botao strong { font-weight: 500; }
+  .diferencial__icone { flex-basis: 30px; }
+  .diferencial__icone svg { width: 30px; height: 36px; }
+  .diferencial__botao .diferencial__seta { width: 24px; height: 24px; margin-left: auto; transition: transform .2s; }
+  .diferencial.aberto .diferencial__botao .diferencial__seta { transform: rotate(180deg); }
+  .diferencial__balao {
+    position: static;
+    width: auto;
+    max-width: none;
+    padding: 0 16px 20px 64px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .diferencial__balao-topo { display: none; }
+  .diferencial__balao p { margin: 0; font-size: 16px; }
+  .sobre-carro { margin: 0 !important; padding: 22px 16px !important; }
+  .sobre-carro p { font-size: 16px !important; line-height: 1.7; }
+
+  /* itens: 6 primeiros + seta para abrir */
+  .itens-recolhidos .VehicleDetails__list--items .VehicleDetails__list__item:nth-child(n + 7) { display: none; }
+  .VehicleDetails__container__header { position: relative; }
+  .itens-abrir {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--cinza);
+    cursor: pointer;
+  }
+  .itens-abrir svg { width: 26px; height: 26px; transition: transform .2s; }
+  .VehicleDetails:not(.itens-recolhidos) .itens-abrir svg { transform: rotate(90deg); }
+  .VehicleDetails__list--items .VehicleDetails__list__item__value { font-size: 16px !important; font-weight: 500; }
+
+  /* ficha técnica */
+  .ficha-tecnica__titulo { margin: 0 16px 12px; font-size: 16px; }
+  .ficha-tecnica__grupo summary { padding: 22px 16px; font-size: 18px; }
+  .ficha-tecnica__icone { flex-basis: 28px; width: 28px; height: 28px; }
+  .ficha-tecnica__seta { width: 26px; height: 26px; }
+  .ficha-tecnica__grupo ul { grid-template-columns: 1fr; padding: 0 16px 20px 58px; font-size: 15px; }
+
+  /* sai a barra antiga (preço + WhatsApp) e entra a de 3 botões */
+  .Detail__container__right { display: none !important; }
+  .barra-acoes {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: 1fr 56px 1fr;
+    gap: 8px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: #fff;
+    box-shadow: 0 -4px 16px rgba(46, 45, 55, .12);
+  }
+  .barra-acoes a {
+    display: grid;
+    place-items: center;
+    height: 54px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .barra-acoes__secundario, .barra-acoes__ligar { background: var(--texto); color: #fff; }
+  .barra-acoes__ligar svg { width: 24px; height: 24px; }
+  .barra-acoes__principal { background: var(--vermelho); color: #fff; }
+}
+@media (max-width: 768px) {
+  .VehicleDetails__header__top { display: block !important; width: auto !important; margin: 0 !important; }
+  #VehicleBasicInformationTitle { width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .barra-acoes { grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1.25fr); gap: 8px; padding-left: 12px; padding-right: 12px; }
+  .barra-acoes a { font-size: 15px; padding: 0 6px; }
+}
+
+/* Foto e cards de ponta a ponta: o carrossel original deslocava as fotos 8px (sobrava uma faixa à direita) */
+@media (max-width: 768px) {
+  html { overflow-x: clip; }
+  /* o CSS original deixava o body como camada absoluta com rolagem própria: a barrinha dela era a faixa à direita */
+  body { position: static !important; overflow: visible !important; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important; }
+  .DetailCarousel,
+  .DetailCarousel__container { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .DetailCarousel__container__animation { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+  .DetailCarousel__container__items { margin: 0 !important; padding: 0 !important; flex: 0 0 100% !important; width: 100% !important; }
+  .DetailCarousel__container__items__photo { display: block; width: 100% !important; margin: 0 !important; }
+  main.page, .Detail__container, .Detail__container__left, .InformationVehicleDetails,
+  .InformationVehicleDetails > .VehicleDetails, .ficha-tecnica {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+@media (max-width: 768px) {
+  /* o #root original ficava ~6px mais estreito que a tela */
+  #root { width: 100% !important; max-width: none !important; min-width: 0 !important; margin: 0 !important; padding: 0 !important; }
+  /* a galeria tinha altura fixa (280px) e sobrava cinza embaixo da foto */
+  .DetailCarousel, .DetailCarousel__container { height: auto !important; min-height: 0 !important; }
+}
+/* telas bem estreitas (ou o painel de pré-visualização) */
+@media (max-width: 360px) {
+  .preco-mobile { flex-wrap: wrap; }
+  .preco-mobile__valor { font-size: 28px; }
+  .barra-acoes { grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1.3fr); gap: 6px; padding-left: 8px; padding-right: 8px; }
+  .barra-acoes a { height: 48px; font-size: 13px; white-space: normal; line-height: 1.15; text-align: center; }
+}
+
+/* ---------- Botão de WhatsApp: verde mais firme e resposta ao toque ---------- */
+.botao-whatsapp {
+  background: #1fa855 !important;
+  box-shadow: 0 2px 8px rgba(31, 168, 85, .28);
+  transition: background-color .15s ease, box-shadow .15s ease, transform .1s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.botao-whatsapp:hover { background: #178f47 !important; box-shadow: 0 4px 14px rgba(31, 168, 85, .38); }
+.botao-whatsapp:active { background: #12753a !important; transform: scale(.96); box-shadow: 0 1px 4px rgba(31, 168, 85, .3); }
+.botao-whatsapp:focus-visible { outline: 3px solid rgba(31, 168, 85, .45); outline-offset: 2px; }
+
+/* tamanho de acordo com a tela */
+@media (max-width: 480px) {
+  .botao-whatsapp:not(.botao-whatsapp--grande) { padding: 9px 14px !important; font-size: 14px !important; gap: 6px; }
+}
+/* tela bem estreita: fica só o ícone, redondo */
+@media (max-width: 340px) {
+  .botao-whatsapp:not(.botao-whatsapp--grande) {
+    width: 42px;
+    height: 42px;
+    padding: 0 !important;
+    justify-content: center;
+    font-size: 0 !important;
+  }
+  .botao-whatsapp:not(.botao-whatsapp--grande)::before { width: 22px; height: 22px; margin: 0; }
+}

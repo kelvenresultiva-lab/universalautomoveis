@@ -1,0 +1,29 @@
+# Lista branca: só sobe o que o site usa.
+# (os modelos salvos da Salim/Webmotors, com scripts e rastreadores, ficam só no computador)
+/*
+!/.gitignore
+!/index.html
+!/README.md
+
+!/modelos/
+/modelos/*
+
+# catálogo (página principal) — inteiro
+!/modelos/catalogo/
+
+# página do carro — só os arquivos usados
+!/modelos/pagina-veiculo/
+/modelos/pagina-veiculo/*
+!/modelos/pagina-veiculo/index.html
+!/modelos/pagina-veiculo/ajustes.css
+!/modelos/pagina-veiculo/celular.css
+!/modelos/pagina-veiculo/veiculo.js
+!/modelos/pagina-veiculo/arquivos/
+/modelos/pagina-veiculo/arquivos/*
+!/modelos/pagina-veiculo/arquivos/adDetail.8a4a586448b6e5226a35.css
+!/modelos/pagina-veiculo/arquivos/main.2f914bda0d09bf97ac79.css
+!/modelos/pagina-veiculo/arquivos/vendors.c912ccb8455ae8ae6644.css
+!/modelos/pagina-veiculo/arquivos/fonts.css
+!/modelos/pagina-veiculo/arquivos/cam-video.svg
+!/modelos/pagina-veiculo/arquivos/cash.svg
+!/modelos/pagina-veiculo/arquivos/icon-location.svg

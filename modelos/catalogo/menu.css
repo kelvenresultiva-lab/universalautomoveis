@@ -1,0 +1,128 @@
+/* Menu de três traços e painel lateral (catálogo e página do carro) */
+.menu-tracos {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-tracos span { display: block; height: 2px; border-radius: 2px; background: #2e2d37; transition: transform .2s; }
+.menu-tracos:hover { background: #f2f2f6; }
+.menu-tracos:active { transform: scale(.94); }
+.menu-tracos:focus-visible { outline: 2px solid #2e2d37; outline-offset: 2px; }
+html.menu-aberto, html.menu-aberto body { overflow: hidden !important; }
+
+.menu-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(46, 45, 55, .45);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.menu-fundo.aberto { opacity: 1; }
+.menu-painel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  width: min(360px, 88vw);
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, .18);
+  font-family: "Figtree", system-ui, sans-serif;
+  color: #2e2d37;
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  visibility: hidden;
+}
+.menu-painel.aberto { transform: none; visibility: visible; }
+.menu-painel__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 12px 0 20px;
+  border-bottom: 1px solid #e9e9f5;
+}
+.menu-painel__marca {
+  display: inline-flex;
+  flex-direction: column;
+  color: #2e2d37;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1;
+  text-decoration: none;
+}
+.menu-painel__marca small { margin-top: 4px; font-size: .5em; font-weight: 600; letter-spacing: .32em; }
+.menu-painel__fechar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: #2e2d37;
+  cursor: pointer;
+}
+.menu-painel__fechar svg { width: 24px; height: 24px; }
+.menu-painel__fechar:hover { background: #f2f2f6; }
+.menu-painel__secoes { display: flex; flex-direction: column; padding: 8px 0; }
+.menu-painel__secoes a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  color: #2e2d37;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.menu-painel__secoes a:hover, .menu-painel__secoes a:focus-visible { background: #f7f7fb; }
+.menu-painel__secoes svg { flex: 0 0 22px; width: 22px; height: 22px; }
+.menu-painel__seta { margin-left: auto; width: 18px !important; height: 18px !important; color: #8a8a99; }
+.menu-painel__contato {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  padding: 20px;
+  border-top: 1px solid #e9e9f5;
+  font-size: 15px;
+}
+.menu-painel__contato a { color: #2e2d37; text-decoration: none; }
+.menu-painel__contato p { margin: 0; color: #5c5c6b; }
+.menu-painel__whats {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-radius: 10px;
+  background: #1fa855;
+  color: #fff !important;
+  font-weight: 700;
+  transition: background-color .15s, transform .1s;
+}
+.menu-painel__whats:hover { background: #178f47; }
+.menu-painel__whats:active { transform: scale(.97); background: #12753a; }
+
+/* onde o menu de links do topo some, aparecem os três traços */
+@media (max-width: 1150px) {
+  .topo .menu-tracos { display: flex; }
+}
+@media (max-width: 1279px) {
+  [class*="_headerMobileActions_"] .menu-tracos { display: flex; }
+}

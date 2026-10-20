@@ -1,0 +1,752 @@
+/* Ajustes do modelo salvo da Webmotors.
+   O site original gera parte do CSS pelo JavaScript (styled-components, classes "sc-*")
+   e esse CSS não vem no HTML salvo. Aqui ele é recriado com base no print da página. */
+
+:root {
+  --vermelho: #f3123c;
+  --texto: #2e2d37;
+  --cinza: #696977;
+  --borda: #ececf0;
+}
+
+/* ---------- Pop-ups, banner de cookies, menu mobile e anúncios: escondidos ---------- */
+.sc-EHOje,            /* janelas modais (login, videochamada, agendado) */
+.sc-bdVaJa,           /* barra de cookies */
+[class*="_mobilePanel_"],
+.ad-placement,
+iframe {
+  display: none !important;
+}
+
+/* ---------- Diferenciais do anúncio ---------- */
+section.sc-cLQEGU {
+  margin: 0 32px;
+  padding: 24px 0 8px;
+  border-top: 1px solid var(--borda);
+  font-family: inherit;
+}
+.sc-gqPbQI {
+  margin: 0 0 20px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--cinza);
+}
+.sc-fYiAbW {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 0 20px;
+}
+.sc-krvtoX {
+  flex: 0 0 28px;
+  height: 36px;
+  border-radius: 4px;
+  background: var(--texto) url("./arquivos/cam-video.svg") center / 16px no-repeat;
+  filter: none;
+}
+.sc-fOKMvo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 1;
+}
+.sc-dUjcNx .sc-iujRgT,
+.sc-bAeIUo .sc-iujRgT {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto);
+}
+.sc-dUjcNx .sc-cQFLBn {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: var(--cinza);
+}
+.sc-gHboQg {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--vermelho);
+  color: #fff;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(243, 18, 60, .35);
+}
+.sc-gHboQg img {
+  width: 16px;
+  filter: brightness(0) invert(1);
+}
+
+/* Super Preço */
+.sc-hORach {
+  padding: 4px 0 20px;
+}
+.sc-bAeIUo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+.sc-eLExRp {
+  flex: 0 0 28px;
+  height: 36px;
+  border-radius: 4px;
+  background: #2db84b url("./arquivos/cash.svg") center / 18px no-repeat;
+}
+.sc-bAeIUo .sc-dnqmqq svg {
+  width: 14px;
+  height: 14px;
+}
+.sc-GMQeP {
+  display: none;           /* texto do Super Preço fica recolhido, como no original */
+}
+
+/* ---------- Sobre o vendedor ---------- */
+.sc-jKVCRD {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.sc-kaNhvL {
+  align-self: stretch;
+  background: var(--borda);
+}
+.sc-iBEsjs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.sc-chbbiW {
+  flex: 0 0 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #f0f0f5;
+}
+.sc-hzNEM h2 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texto);
+}
+.sc-kxynE {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--cinza);
+}
+.sc-kxynE::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: url("./arquivos/icon-location.svg") center / contain no-repeat;
+}
+.sc-LKuAh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 200px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #d5d5dc;
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--texto);
+}
+.sc-LKuAh .open::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--vermelho);
+  vertical-align: -2px;
+}
+.sc-LKuAh .arrow {
+  width: 6px;
+  height: 6px;
+  border: solid var(--texto);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+/* Conquistas */
+.sc-cooIXK {
+  text-align: center;
+}
+.sc-kZmsYB {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto);
+}
+.sc-fcdeBU {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.sc-gmeYpB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 110px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--cinza);
+}
+.sc-gmeYpB img {
+  width: 26px;
+}
+.sc-gmeYpB strong {
+  color: var(--texto);
+}
+
+/* ---------- "Você também pode gostar": cards de carro ---------- */
+a.sc-jhAzac {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(46, 45, 55, .08);
+  color: var(--texto);
+  text-decoration: none;
+}
+.sc-fBuWsC {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.sc-cHGsZl {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 12px 16px 8px;
+}
+.sc-fMiknA {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.sc-dVhcbM {
+  min-height: 28px;
+  margin: 2px 0 0;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--cinza);
+  text-transform: uppercase;
+}
+.sc-cHGsZl .price {
+  margin: 20px 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.sc-caSCKo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--cinza);
+}
+.sc-kjoXOD {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 16px;
+  padding: 10px 0 14px;
+  border-top: 1px solid var(--borda);
+  font-size: 10px;
+  color: var(--cinza);
+}
+.sc-TOsTZ {
+  width: 10px;
+}
+.RecommendedVehicles .slick-padding {
+  height: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* ---------- Categorias ---------- */
+.sc-cMljjf {
+  margin: 32px 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texto);
+}
+#categories-carousel {
+  padding-bottom: 40px;
+}
+.sc-cvbbAY {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #2e2d37 center / cover no-repeat;
+}
+.sc-cvbbAY::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, 0) 55%);
+}
+.sc-cvbbAY a {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  color: #fff;
+  text-decoration: none;
+}
+.sc-jWBwVP {
+  margin: 0;
+  padding: 14px 16px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+}
+/* (as fotos de fundo das categorias foram removidas junto com a seção) */
+
+/* Card do vendedor ocupa a coluna inteira (o CSS original limitava a largura) */
+.sc-jKVCRD { grid-template-columns: 1.4fr 1px 1fr; }
+.sc-jKVCRD .CardSeller,
+.sc-jKVCRD .CardSeller__container,
+.sc-jKVCRD .CardSeller__container__left,
+.sc-jKVCRD .CardSeller__container__right,
+.sc-jKVCRD .CardSeller__stock { width: 100%; max-width: none; }
+.sc-hzNEM { flex: 1; }
+
+/* ---------- Marca da loja (provisória até chegar o logo) ---------- */
+.marca-loja {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--texto);
+  white-space: nowrap;
+}
+[class*="_logo_"] a,
+.marca-loja-mobile {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+[class*="_headerMobileContainer_"] {
+  justify-content: space-between;
+  align-items: center;
+}
+.item-menu {
+  color: var(--texto);
+  text-decoration: none;
+}
+.botao-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #1fa855;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.CardSeller__phone__view {
+  background: #1fa855 !important;
+  border-color: #1fa855 !important;
+}
+
+/* O menu do rodapé fica visível em qualquer largura (a versão em acordeão foi removida) */
+nav[class*="_footerNavigation_"] {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+}
+
+/* Telefone da loja aparece inteiro (o original cortava e esmaecia o número) */
+.CardSeller__phone__number { width: auto !important; }
+.CardSeller__phone__number::after { display: none; }
+.CardSeller__phone { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+/* ================= Celular ================= */
+@media (max-width: 768px) {
+  /* o topo mobile já tem a logo; a cópia extra sai */
+  .marca-loja-mobile { display: none; }
+
+  /* Fotos do carro: uma por tela, grandes, deslizando com o dedo */
+  .DetailCarousel,
+  .DetailCarousel__container { height: auto !important; }
+  .DetailCarousel__container__animation {
+    left: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    transform: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .DetailCarousel__container__animation::-webkit-scrollbar { display: none; }
+  .DetailCarousel__container__items {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    scroll-snap-align: start;
+  }
+  .DetailCarousel__container__items__photo {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .DetailCarousel__arrows { display: none; }
+
+  /* Formulário de cadastro (simulação com CPF) sai no celular */
+  .SimulationContainer { display: none !important; }
+  /* o botão "Ver parcelas" levava a esse formulário */
+  .Forms__linkFinances { display: none !important; }
+
+  /* Nada passa da largura da tela */
+  .VehicleDetails,
+  .VehicleDetails__header__top,
+  .VehicleDetails--no-shadow { max-width: 100%; box-sizing: border-box; }
+  section.sc-cLQEGU { margin: 0 16px; }
+  .sc-fOKMvo { flex-wrap: wrap; }
+  .sc-jKVCRD { grid-template-columns: 1fr; gap: 24px; }
+  .sc-kaNhvL { display: none; }
+
+  /* o card não cobre mais a parte de baixo da foto */
+  .Detail__container { margin-top: 12px !important; }
+  /* ficha técnica: valores menores para não encostarem uns nos outros */
+  .VehicleDetails__list__item__value { font-size: 14px !important; }
+  /* comparação de preços: os dois valores lado a lado sem encostar */
+  .VehicleDetailsFipe__container__info { gap: 24px; }
+  .VehicleDetailsFipe__price { flex: 1; min-width: 0; }
+  .VehicleDetailsFipe__price__value { font-size: 21px !important; white-space: nowrap; }
+}
+
+/* ---------- Painel de preço com WhatsApp (no lugar do formulário) ---------- */
+.botao-whatsapp--grande {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.botao-whatsapp--grande::before,
+.botao-whatsapp:not(.botao-whatsapp--grande)::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.painel-preco__aviso {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--cinza);
+}
+
+@media (max-width: 768px) {
+  /* No celular o preço e o WhatsApp ficam fixos no rodapé da tela */
+  .Detail__container__right {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: #fff;
+    box-shadow: 0 -4px 16px rgba(46, 45, 55, .12);
+  }
+  .Detail__container__right .Forms,
+  .Detail__container__right .Forms__vehicleSendProposal,
+  .Detail__container__right .Forms__vehicleSendProposal__container-scroll,
+  .Detail__container__right .Forms__vehicleSendProposal__container {
+    position: static !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+  .Forms__vehicleSendProposal__container__info-form {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    padding: 0 !important;
+  }
+  .Forms__vehicleSendProposal__container__price {
+    font-size: 20px !important;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
+  .botao-whatsapp--grande {
+    flex: 1;
+    margin: 0;
+    padding: 12px;
+    font-size: 14px;
+  }
+  .painel-preco__aviso { display: none; }
+  body { padding-bottom: 76px; }
+}
+
+/* "Mais carros no nosso estoque": sem o JS do carrossel, a lista desliza com o dedo/rolagem */
+.RecommendedVehicles .slick-list {
+  overflow-x: auto !important;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+.RecommendedVehicles .slick-track { transform: none !important; }
+.RecommendedVehicles .slick-slide { scroll-snap-align: start; }
+.RecommendedVehicles .slick-arrow { display: none !important; }
+
+@media (max-width: 768px) {
+  /* itens do veículo em 2 colunas no celular */
+  .VehicleDetails__list--items {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 16px 12px;
+    width: auto !important;
+  }
+  .VehicleDetails__list--items .VehicleDetails__list__item { width: auto !important; margin: 0 !important; padding: 0 !important; }
+  .VehicleDetails__list--items .VehicleDetails__list__item__value { padding: 0 !important; font-size: 13px !important; line-height: 1.4; }
+  .RecommendedVehicles .slick-slide { width: 240px !important; }
+}
+
+/* Galeria no desktop: as setas e a rolagem passam pelas fotos (o carrossel original dependia do JS da Webmotors) */
+.DetailCarousel__container__animation {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  transform: none !important;
+}
+.DetailCarousel__container__animation::-webkit-scrollbar { display: none; }
+.DetailCarousel__container__items { scroll-snap-align: start; }
+.DetailCarousel__container__items__photo { object-fit: cover; }
+.DetailCarousel__arrows__item { cursor: pointer; z-index: 2; }
+
+/* Marca da loja: UNIVERSAL em destaque, AUTOMÓVEIS menor embaixo */
+.marca-loja {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.marca-loja small {
+  margin-top: 4px;
+  font-size: .5em;
+  font-weight: 600;
+  letter-spacing: .32em;
+}
+
+/* ---------- Veículo já vendido ---------- */
+.aviso-vendido {
+  margin-left: 32px !important;
+  margin-right: 32px !important;
+  margin-top: 24px !important;
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-left: 4px solid #b3123a;
+  border-radius: 4px;
+  background: #fdeef1;
+  color: #7a0c27;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.veiculo-vendido .DetailCarousel__container__items__photo { filter: grayscale(.85); opacity: .8; }
+.veiculo-vendido .Forms__vehicleSendProposal__container__price { color: #b3123a; }
+.DetailCarousel { position: relative; }
+.faixa-vendido--galeria {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  padding: 10px 30px;
+  border: 3px solid #fff;
+  border-radius: 6px;
+  background: rgba(179, 18, 58, .92);
+  color: #fff;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .aviso-vendido { margin-left: 16px !important; margin-right: 16px !important; }
+}
+
+/* ---------- "Mais carros no nosso estoque": texto escuro e grade centralizada ---------- */
+.sc-kgAjT > .CarouselContainer {
+  box-sizing: border-box;
+  max-width: 1640px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.sc-kgAjT .CarouselContainer__scroll { width: auto !important; padding: 0 !important; }
+.RecommendedVehicles .slick-list { overflow: visible !important; }
+.RecommendedVehicles .slick-track {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  width: auto !important;
+  margin: 0 !important;
+}
+.RecommendedVehicles .slick-track::before,
+.RecommendedVehicles .slick-track::after { display: none !important; }
+.RecommendedVehicles .slick-slide {
+  float: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+.RecommendedVehicles .slick-slide > div,
+.RecommendedVehicles .slick-padding { height: 100%; padding: 0 !important; }
+
+.RecommendedVehicles a.sc-jhAzac .sc-fMiknA { color: var(--texto) !important; font-size: 14px; font-weight: 700; }
+.RecommendedVehicles a.sc-jhAzac .sc-dVhcbM { color: #4a4a57 !important; font-size: 11px; }
+.RecommendedVehicles a.sc-jhAzac .price { color: var(--texto) !important; }
+.RecommendedVehicles a.sc-jhAzac .sc-caSCKo,
+.RecommendedVehicles a.sc-jhAzac .sc-gisBJw,
+.RecommendedVehicles a.sc-jhAzac .sc-kjoXOD,
+.RecommendedVehicles a.sc-jhAzac .sc-kjoXOD span { color: #4a4a57 !important; font-size: 11px; }
+.sc-kgAjT .CarouselContainer > h2,
+.sc-kgAjT h2:not(.sc-fMiknA) { color: var(--texto) !important; font-weight: 600; }
+
+@media (max-width: 1400px) {
+  .RecommendedVehicles .slick-track { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 1000px) {
+  .RecommendedVehicles .slick-track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* no celular continua uma fileira que desliza com o dedo */
+@media (max-width: 768px) {
+  .sc-kgAjT > .CarouselContainer { padding: 0 16px; }
+  .RecommendedVehicles .slick-list { overflow-x: auto !important; scroll-snap-type: x proximity; }
+  .RecommendedVehicles .slick-track {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 240px;
+    gap: 12px;
+  }
+  .RecommendedVehicles .slick-slide { width: 240px !important; scroll-snap-align: start; }
+}
+
+/* Celular: usa o rodapé completo (com contatos) no lugar do rodapé mobile da Webmotors */
+@media (max-width: 1024px) {
+  footer[class*="_footerMobile_"] { display: none !important; }
+  footer[class*="_footer_"]:not([class*="_footerMobile_"]) { display: block !important; }
+  footer[class*="_footer_"] [class*="_footerInner_"] { padding: 32px 16px 24px !important; }
+  footer[class*="_footer_"] nav[class*="_footerNavigation_"] { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
+  footer[class*="_footer_"] nav[class*="_footerNavigation_"] a { overflow-wrap: anywhere; }
+  footer[class*="_footer_"] nav[class*="_footerNavigation_"] { width: auto !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+  footer[class*="_footer_"] nav[class*="_footerNavigation_"] > div { min-width: 0 !important; width: auto !important; max-width: none !important; margin: 0 !important; padding: 0 !important; flex: none !important; }
+}
+[class*="_footerAppStores_"] { display: none !important; }
+
+/* ---------- Diferenciais do anúncio (selos com balão) e "Sobre o carro" ---------- */
+.diferenciais,
+.sobre-carro {
+  margin: 0 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--borda);
+}
+.diferenciais__titulo {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--cinza);
+}
+.diferenciais__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.diferencial { position: relative; }
+.diferencial__botao,
+.diferencial__balao-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: left;
+}
+.diferencial__botao strong,
+.diferencial__balao-topo strong { font-weight: 600; }
+.diferencial__icone { display: inline-flex; flex: 0 0 26px; }
+.diferencial__icone svg { width: 26px; height: 30px; }
+.diferencial__seta { width: 18px; height: 18px; margin-left: 4px; color: var(--texto); }
+.diferencial__seta--cima { transform: rotate(180deg); }
+.diferencial__balao {
+  position: absolute;
+  top: -14px;
+  left: -24px;
+  z-index: 30;
+  display: none;
+  width: max-content;
+  max-width: 340px;
+  padding: 10px 24px 18px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(46, 45, 55, .18);
+}
+.diferencial.aberto .diferencial__balao { display: block; }
+.diferencial__balao p {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--texto);
+}
+.diferencial__balao p strong { font-weight: 700; }
+.sobre-carro p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--texto);
+}
+@media (max-width: 768px) {
+  .diferenciais, .sobre-carro { margin: 0 16px; }
+  .diferenciais__lista { flex-direction: column; gap: 4px; }
+  .diferencial__balao { left: -12px; max-width: calc(100vw - 40px); }
+  .sobre-carro p { font-size: 15px; }
+}
+.preco-consulta { font-size: 26px !important; }
+@media (max-width: 768px) {
+  .preco-consulta { font-size: 16px !important; }
+}
+.fipe-ref { display: block; margin-top: 6px; font-size: 10px; opacity: .75; line-height: 1.4; }

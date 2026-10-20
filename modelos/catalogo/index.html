@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Universal Automóveis | Carros e motos seminovos em Contagem/MG</title>
+  <meta name="description" content="Universal Automóveis, em Contagem/MG: compra, venda, troca, consignação e financiamento de carros e motos. Veja fotos, ano e preço de todo o estoque.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catalogo.css">
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+  <!-- ===== Topo ===== -->
+  <header class="topo">
+    <div class="topo__conteudo">
+      <a class="topo__marca" href="./" aria-label="Universal Automóveis">UNIVERSAL<small>AUTOMÓVEIS</small></a>
+      <nav class="topo__menu" aria-label="Navegação principal">
+        <a href="./" aria-current="page">Estoque</a>
+        <a href="https://wa.me/5531989044592?text=Ol%C3%A1!%20Quero%20vender%20meu%20ve%C3%ADculo." target="_blank" rel="noopener">Venda seu veículo</a>
+        <a href="https://wa.me/5531989044592?text=Ol%C3%A1!%20Quero%20simular%20um%20financiamento." target="_blank" rel="noopener">Financiamento</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="pagina">
+    <nav class="trilha" aria-label="Você está em">
+      <a href="./">Home</a>
+      <span id="trilha-extra"></span>
+    </nav>
+
+    <div class="catalogo">
+
+      <!-- ===== Filtros ===== -->
+      <aside class="filtros" id="filtros" aria-label="Filtros">
+        <div class="filtros__topo-mobile">
+          <strong>Filtros</strong>
+          <button type="button" class="filtros__fechar" id="fechar-filtros" aria-label="Fechar filtros">✕</button>
+        </div>
+
+        <section class="filtros__bloco filtros__aplicados" id="bloco-aplicados" hidden>
+          <div class="filtros__titulo-linha">
+            <h2 class="filtros__titulo-pequeno">Filtros aplicados <span class="contador" id="contador-filtros">0</span></h2>
+          </div>
+          <button type="button" class="link-limpar" id="limpar-todos">Limpar todos</button>
+          <div class="chips" id="chips"></div>
+        </section>
+
+        <section class="filtros__bloco">
+          <div class="alternador" role="group" aria-label="Tipo de veículo">
+            <button type="button" class="alternador__opcao" data-tipo="carro" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11m-14 0h14m-14 0a2 2 0 0 0-2 2v3h2m14-5a2 2 0 0 1 2 2v3h-2M5 16v2m14-2v2M7.5 14h.01M16.5 14h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Carros
+            </button>
+            <button type="button" class="alternador__opcao" data-tipo="moto" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17a3 3 0 1 0 0-.01M19 17a3 3 0 1 0 0-.01M8 17h5l3-6h-4l-2-3H7m9 3l3 6M14 6h2l1 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Motos
+            </button>
+          </div>
+        </section>
+
+        <section class="filtros__bloco">
+          <h2 class="filtros__titulo">Marca e modelo</h2>
+          <label class="campo">
+            <span class="campo__rotulo">Selecionar marca</span>
+            <select id="f-marca"><option value="">Todas as marcas</option></select>
+          </label>
+          <label class="campo">
+            <span class="campo__rotulo">Selecionar modelo</span>
+            <select id="f-modelo" disabled><option value="">Todos os modelos</option></select>
+          </label>
+        </section>
+
+        <section class="filtros__bloco">
+          <h2 class="filtros__titulo">Ano</h2>
+          <p class="filtros__subtitulo">Escolher um intervalo</p>
+          <div class="campo-duplo">
+            <label class="campo">
+              <span class="campo__rotulo">Ano mínimo</span>
+              <select id="f-ano-min"><option value="">Qualquer</option></select>
+            </label>
+            <label class="campo">
+              <span class="campo__rotulo">Ano máximo</span>
+              <select id="f-ano-max"><option value="">Qualquer</option></select>
+            </label>
+          </div>
+          <p class="filtros__subtitulo">Escolher um ano específico</p>
+          <div class="anos" id="anos" role="group" aria-label="Ano específico"></div>
+        </section>
+
+        <section class="filtros__bloco">
+          <h2 class="filtros__titulo">Usado e 0 Km</h2>
+          <div class="opcoes-radio" id="condicao" role="radiogroup" aria-label="Usado ou 0 Km">
+            <label class="radio"><input type="radio" name="condicao" value="usado"><span class="radio__texto">Usado</span><span class="radio__qtd" data-qtd="usado">(0)</span></label>
+            <label class="radio"><input type="radio" name="condicao" value="novo"><span class="radio__texto">0 Km (Novo)</span><span class="radio__qtd" data-qtd="novo">(0)</span></label>
+          </div>
+        </section>
+
+        <section class="filtros__bloco">
+          <h2 class="filtros__titulo">Preço</h2>
+          <label class="campo">
+            <span class="campo__rotulo">Preço máximo</span>
+            <select id="f-preco">
+              <option value="">Qualquer preço</option>
+              <option value="50000">Até R$ 50.000</option>
+              <option value="80000">Até R$ 80.000</option>
+              <option value="100000">Até R$ 100.000</option>
+              <option value="130000">Até R$ 130.000</option>
+              <option value="160000">Até R$ 160.000</option>
+              <option value="200000">Até R$ 200.000</option>
+              <option value="300000">Até R$ 300.000</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="filtros__bloco">
+          <h2 class="filtros__titulo">Quilometragem</h2>
+          <label class="campo">
+            <span class="campo__rotulo">Km máximo</span>
+            <select id="f-km">
+              <option value="">Qualquer km</option>
+              <option value="0">0 km</option>
+              <option value="20000">Até 20.000 km</option>
+              <option value="40000">Até 40.000 km</option>
+              <option value="60000">Até 60.000 km</option>
+              <option value="80000">Até 80.000 km</option>
+              <option value="100000">Até 100.000 km</option>
+            </select>
+          </label>
+        </section>
+
+        <div class="filtros__rodape-mobile">
+          <button type="button" class="botao-escuro" id="ver-resultados">Ver resultados</button>
+        </div>
+      </aside>
+
+      <!-- ===== Resultados ===== -->
+      <main class="resultados">
+        <div class="resultados__cabecalho">
+          <div>
+            <h1 class="resultados__titulo" id="titulo">Carros e motos seminovos à venda</h1>
+            <p class="resultados__total" id="total">Carregando estoque…</p>
+          </div>
+          <label class="campo campo--ordenar">
+            <span class="campo__rotulo">Ordenar por</span>
+            <select id="f-ordem">
+              <option value="relevantes">Mais relevantes</option>
+              <option value="menor-preco">Menor preço</option>
+              <option value="maior-preco">Maior preço</option>
+              <option value="mais-novos">Mais novos</option>
+              <option value="menor-km">Menor quilometragem</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="button" class="botao-filtros-mobile" id="abrir-filtros">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Filtros <span class="contador" id="contador-mobile" hidden>0</span>
+        </button>
+
+        <div class="grade" id="grade"></div>
+
+        <div class="vazio" id="vazio" hidden>
+          <strong>Nenhum veículo encontrado com esses filtros.</strong>
+          <p>Tente tirar algum filtro ou fale com a gente no WhatsApp: a gente procura o carro para você.</p>
+          <button type="button" class="botao-escuro" id="limpar-vazio">Limpar filtros</button>
+        </div>
+
+        <nav class="paginacao" id="paginacao" aria-label="Páginas"></nav>
+      </main>
+    </div>
+  </div>
+
+  <!-- ===== Rodapé ===== -->
+  <footer class="rodape" id="contato">
+    <div class="rodape__conteudo">
+      <div class="rodape__marca-linha">
+        <a class="topo__marca" href="./" aria-label="Universal Automóveis">UNIVERSAL<small>AUTOMÓVEIS</small></a>
+        <a class="rodape__topo" href="#">Topo ↑</a>
+      </div>
+      <hr>
+      <div class="rodape__colunas">
+        <div>
+          <h3>Estoque</h3>
+          <a href="./?tipo=carro">Carros</a>
+          <a href="./?tipo=moto">Motos</a>
+          <a href="./">Ver todo o estoque</a>
+        </div>
+        <div>
+          <h3>Serviços</h3>
+          <a href="https://wa.me/5531989044592?text=Ol%C3%A1!%20Quero%20vender%20meu%20ve%C3%ADculo." target="_blank" rel="noopener">Compra, venda e troca</a>
+          <a href="https://wa.me/5531989044592?text=Ol%C3%A1!%20Quero%20deixar%20meu%20ve%C3%ADculo%20em%20consigna%C3%A7%C3%A3o." target="_blank" rel="noopener">Consignação</a>
+          <a href="https://wa.me/5531989044592?text=Ol%C3%A1!%20Quero%20saber%20sobre%20loca%C3%A7%C3%A3o%20de%20ve%C3%ADculos." target="_blank" rel="noopener">Locação</a>
+          <a href="https://wa.me/5531989044592?text=Ol%C3%A1!%20Quero%20simular%20um%20financiamento." target="_blank" rel="noopener">Financiamento</a>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <a href="https://wa.me/5531989044592" target="_blank" rel="noopener">Cauã: (31) 98904-4592</a>
+          <a href="https://wa.me/5531989182923" target="_blank" rel="noopener">Cristiano: (31) 98918-2923</a>
+          <a href="https://wa.me/5531989857522" target="_blank" rel="noopener">Luã: (31) 98985-7522</a>
+          <a href="tel:+553133953117">Telefone: (31) 3395-3117</a>
+        </div>
+        <div>
+          <h3>Onde estamos</h3>
+          <span>Contagem, MG</span>
+          <a href="https://www.instagram.com/universalautomoveismg/" target="_blank" rel="noopener">Instagram: @universalautomoveismg</a>
+        </div>
+      </div>
+      <hr>
+      <p class="rodape__direitos">© 2026 Universal Automóveis • Contagem/MG • Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <script src="estoque.js"></script>
+  <script src="catalogo.js"></script>
+  <script src="menu.js"></script>
+</body>
+</html>
